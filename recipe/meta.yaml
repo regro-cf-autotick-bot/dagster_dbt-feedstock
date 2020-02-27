@@ -1,18 +1,18 @@
 {% set name = "dagster_dbt" %}
-{% set version = "0.6.5" %}
+{% set version = "0.7.2" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: 39e38a0096990aae81eef1992f8327b8825db0f2f173f765d8e531784e912cd9
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('_', '-') }}-{{ version }}.tar.gz
+  sha256: b1b64f5524e4450d7a3e924003e35ec2cf8b3691de51737888d67f14dc18ff72
 
 build:
   number: 0
   noarch: python
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
@@ -28,11 +28,11 @@ test:
     - dagster_dbt
 
 about:
-  home: "https://github.com/dagster-io/dagster/tree/master/python_modules/libraries/dagster-dbt"
+  home: https://github.com/dagster-io/dagster/tree/master/python_modules/libraries/dagster-dbt
   license: Apache-2.0
   license_family: APACHE
   license_file: LICENSE
-  summary: "Package for Dagster dbt integration."
+  summary: Package for Dagster dbt integration.
 
 extra:
   recipe-maintainers:
